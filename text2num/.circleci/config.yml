@@ -1,0 +1,97 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+
+    working_directory: ~/text2num
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "setup.py" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          # Don't do `python setup.py install` here!
+          name: install inplace with dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install sphinx
+            pip install flake8
+            pip install mypy
+            python setup.py develop
+
+      - save_cache:
+          paths:
+            - ./venv
+
+          key: v1-dependencies-{{ checksum "setup.py" }}
+
+      # run tests!
+      - run:
+          name: run tests
+          command: |
+            . venv/bin/activate
+            mypy text_to_num
+            python setup.py test
+            flake8 --max-line-length=110 text_to_num
+
+      # Build the documentation
+      - run:
+          name: build doc
+          command: |
+            . venv/bin/activate
+            cd docs && make html
+
+      - store_artifacts:
+          path: docs/_build/html/
+          destination: html-doc
+
+  deploy:
+    docker:
+      - image: circleci/python:3.6.1
+
+    working_directory: ~/text2num
+
+    steps:
+      - checkout
+
+      - run:
+          name: init .pypirc
+          command: |
+            echo -e "[pypi]" >> ~/.pypirc
+            echo -e "username = allomedia" >> ~/.pypirc
+            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+
+      - run:
+          name: create packages
+          command: |
+            python setup.py sdist
+
+      - run:
+          name: upload to pypi
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -U pip
+            pip install twine
+            twine upload dist/*
+
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: release
