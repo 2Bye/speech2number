@@ -50,3 +50,9 @@ pip install text_unidecode
 
 * Create end-to-end inference without using bash console
 * Сreate training guide
+
+## Possible improvements
+
+* Improve data labeling _(in this case, automatic labeling was used)_
+* More training data _(in this case, 5500 samples were used)_
+* Increase model  _(up to 2 mb, in this case - 500Kb)_
