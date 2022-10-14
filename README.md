@@ -3,7 +3,7 @@ E2E method for conversion spoken numbers to text numbers
 
 ## Description 
 
-The method receives an **Russian-speech** WAV audio (mono, 16000KHz) file and uses it as an input to the model, based on a QuartzNET - deep convolutional neural network. 
+The method receives an **Russian-speech** WAV audio (mono, 16000KHz) file and uses it as an input to the model, based on a [QuartzNET - deep convolutional neural network.](https://arxiv.org/abs/1910.10261) 
 
 The implementation of the model is taken in [NeMo framework](https://github.com/NVIDIA/NeMo)
 
@@ -55,4 +55,4 @@ pip install text_unidecode
 
 * Improve data labeling _(in this case, automatic labeling was used)_
 * More training data _(in this case, 5500 samples were used)_
-* Increase model  _(up to 2 mb, in this case - 500Kb)_
+* Increase model  _(up to 2 mb, in this case - 500Kb or ~94k parameters)_
