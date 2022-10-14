@@ -33,7 +33,7 @@ Examples of input and output files can be found in the folder **examples/**
 * Pytorch 1.10.0 or above
 * NVIDIA GPU for fast inference
 
-**Спreating an environment**
+**Сreating an environment**
 
 ```
 conda create --name russian_numbers python==3.8
