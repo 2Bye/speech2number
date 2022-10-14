@@ -22,7 +22,7 @@ The user must run the script and provide the path to the csv file, as well as th
 
 **Example**:
 
-```sh inference.sh 'input.csv' 'output.csv' ```
+``` sh inference.sh examples/example_input.csv results.csv ```
 
 Examples of input and output files can be found in the folder **examples/**
 
