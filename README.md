@@ -26,6 +26,17 @@ The user should run the script and provide the path to the csv file, as well as 
 
 Examples of input and output files can be found in the folder **examples/**
 
+## Results
+
+Below are the validation graphs when training the model
+
+<img width="250" alt="image" src="https://user-images.githubusercontent.com/45552093/195869022-856475a3-ef19-4570-bcb7-27bd4d2a9345.png">
+<img width="250" alt="image" src="https://user-images.githubusercontent.com/45552093/195869061-2a00f676-c7a6-4775-82f8-d7acd177954f.png">
+
+The model was also tested on test data
+
+* WER: 0.1313
+* CER: 0.0532
 
 ## Installation and Requirements
 
