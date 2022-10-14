@@ -38,6 +38,9 @@ The model was also tested on test data
 * WER: 0.1313
 * CER: 0.0532
 
+However, when the model was tested on "in the wild data", the results were poor.
+This can be solved by increasing the unique speakers and increasing the amount of training data.
+
 ## Installation and Requirements
 
 * Python 3.8 or above
