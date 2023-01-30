@@ -1,6 +1,10 @@
 # speech2number
 E2E method for conversion spoken numbers to text numbers
 
+P.S.
+
+This project is a test task. The goal of the project is to show how the problem can be approached. Quality and results have a lower priority
+
 ## Description 
 
 The method receives an **Russian-speech** WAV audio (mono, 16000KHz) file and uses it as an input to the model, based on a [QuartzNET - deep convolutional neural network.](https://arxiv.org/abs/1910.10261) 
